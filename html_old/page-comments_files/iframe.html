@@ -1,0 +1,163 @@
+
+<!-- saved from url=(0103)https://channel2423.iklad-chat.biz/iframe.cgi?c=2423&v=2&clientid=poKhABR4rJg1c_oC_f6WjrHXvFszg4S&ssl=1 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		
+
+		<meta http-equiv="Pragma" content="No-Cache">
+
+		<meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+
+		<title></title>
+
+	</head>
+
+	
+
+	<body leftmargin="0" topmargin="0" rightmargin="0" bottommargin="0" marginwidth="0" marginheight="0">
+
+		<script type="text/javascript" language="javascript" src="./jquery.min(1).js"></script>
+
+		
+
+		
+
+<div style="position: absolute; vertical-align:bottom; left:0;">
+
+	<object width="0" height="0" id="sound_player_1" swliveconnect="true">
+
+	 <param name="movie" value="/player.swf">
+
+	 <param name="quality" value="high">
+
+	 <param name="FlashVars" value="id=sound_player_1">
+
+	 <param name="allowScriptAccess" value="always">
+
+	 <embed src="/player.swf" flashvars="id=sound_player_1" allowscriptaccess="always" quality="high" bgcolor="#ffffff" width="0" height="0" name="sound_player_1" align="middle" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">
+
+	</object>
+
+</div>
+
+
+
+<audio id="html5_player_1" src="/sound/0/1.mp3" preload="auto" autobuffer=""></audio>
+
+
+
+<script language="javascript" type="text/javascript">
+
+	var IKLAD_SOUND = {
+
+		flash_SoundPlayer: '',
+
+		flash_SoundFile_Loaded: false,
+
+		
+
+		html5_audio: '',
+
+		use_html5_audio: false,
+
+		
+
+		init: function () {
+
+			IKLAD_SOUND.flash_SoundPlayer = IKLAD_SOUND.get_movie('sound_player_1');
+
+			
+
+		 	IKLAD_SOUND.html5_audio = document.getElementById('html5_player_1');
+
+		 	IKLAD_SOUND.use_html5_audio = IKLAD_SOUND.html5_audio && (typeof IKLAD_SOUND.html5_audio.canPlayType == 'function') && ("no" != IKLAD_SOUND.html5_audio.canPlayType("audio/mpeg")) && ("" != IKLAD_SOUND.html5_audio.canPlayType("audio/mpeg"));
+
+		},
+
+		
+
+		play: function (type) {
+
+			//type is ignored for now
+
+			try {
+
+				
+
+				if (IKLAD_SOUND.html5_audio && IKLAD_SOUND.use_html5_audio && (typeof IKLAD_SOUND.html5_audio.play == 'function')) {
+
+						IKLAD_SOUND.html5_audio.play();
+
+				} else {
+
+				
+
+					if (IKLAD_SOUND.flash_SoundFile_Loaded) {
+
+						
+
+						if (IKLAD_SOUND.flash_SoundPlayer && (typeof IKLAD_SOUND.flash_SoundPlayer.play == 'function')) {
+
+							IKLAD_SOUND.flash_SoundPlayer.play();
+
+						};
+
+						
+
+					} else {
+
+						
+
+						if (IKLAD_SOUND.flash_SoundPlayer && (typeof IKLAD_SOUND.flash_SoundPlayer.load == 'function')) {
+
+							IKLAD_SOUND.flash_SoundPlayer.load('/sound/0/1.mp3');
+
+							IKLAD_SOUND.flash_SoundFile_Loaded = true;
+
+						};
+
+						
+
+					};
+
+				
+
+				};
+
+				
+
+			} catch(err) {
+
+			};
+
+		},
+
+		
+
+		get_movie: function (name) {
+
+	   if (navigator.appName.indexOf("Microsoft") != -1) {
+
+	     return window[name];
+
+	   } else {
+
+	     return document[name];
+
+	   };
+
+		}
+
+	};
+
+	
+
+	
+
+	IKLAD_SOUND.init();
+
+</script>
+
+		
+
+		</body></html>
