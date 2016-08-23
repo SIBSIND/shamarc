@@ -106,8 +106,10 @@ function wpeHeadNav() {
     'before'          => '',
     'after'           => '',
     'link_before'     => '',
-    'link_after'      => '',
-    'items_wrap'      => '<ul class="headnav">%3$s</ul>',
+    'link_after'      => '<span class="header-menu-link-left"></span>
+                            <span class="header-menu-link-center"></span>
+                            <span class="header-menu-link-right"></span>',
+    'items_wrap'      => '<ul class="header-menu-list list-inline">%3$s</ul>',
     'depth'           => 0,
     'walker'          => ''
     )

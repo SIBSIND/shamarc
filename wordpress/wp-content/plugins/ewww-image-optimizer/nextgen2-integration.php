@@ -53,6 +53,12 @@ class ewwwngg {
 			$image_id = $storage->object->_get_image_id( $image );
 		}
 		global $ewwwio_ngg2_background;
+		if ( ! class_exists( 'WP_Background_Process' ) ) {
+			require_once( EWWW_IMAGE_OPTIMIZER_PLUGIN_PATH . 'background.php' );
+		}
+		if ( ! is_object( $ewwwio_ngg2_background ) ) {
+			$ewwwio_ngg2_background = new EWWWIO_Ngg2_Background_Process();
+		}
 		ewwwio_debug_message( "backgrounding optimization for $image_id" );
 		$ewwwio_ngg2_background->push_to_queue( array(
 			'id' => $image_id,
@@ -121,6 +127,12 @@ class ewwwngg {
 				ewwwio_debug_message( "optimized size: $image_size" );
 			} else {
 				global $ewwwio_image_background;
+				if ( ! class_exists( 'WP_Background_Process' ) ) {
+					require_once( EWWW_IMAGE_OPTIMIZER_PLUGIN_PATH . 'background.php' );
+				}
+				if ( ! is_object( $ewwwio_image_background ) ) {
+					$ewwwio_image_background = new EWWWIO_Image_Background_Process();
+				}
 				$ewwwio_image_background->push_to_queue( $filename );
 				$ewwwio_image_background->save()->dispatch();
 				ewwwio_debug_message( "nextgen dynamic thumb queued: $filename" );
@@ -618,17 +630,12 @@ if ( ! empty( $_REQUEST['page'] ) && $_REQUEST['page'] !== 'ngg_other_options' &
 	class EWWWIO_Gallery_Storage extends Mixin {
 		function generate_image_size( $image, $size, $params = null, $skip_defaults = false ) {
 			ewwwio_debug_message( '<b>' . __FUNCTION__ . '()</b>' );
-//			global $ewww_defer;
 			if ( ! defined( 'EWWW_IMAGE_OPTIMIZER_CLOUD' ) ) {
 				ewww_image_optimizer_init();
 			}
 			$success = $this->call_parent( 'generate_image_size', $image, $size, $params, $skip_defaults );
 			if ( $success ) {
 				$filename = $success->fileName;
-/*				if ( $ewww_defer && ewww_image_optimizer_get_option( 'ewww_image_optimizer_defer' ) ) {
-					ewww_image_optimizer_add_deferred_attachment( "file,$filename" );
-					return $saved;
-				}*/
 				ewww_image_optimizer( $filename );
 				ewwwio_debug_message( "nextgen dynamic thumb saved: $filename" );
 				$image_size = ewww_image_optimizer_filesize($filename);

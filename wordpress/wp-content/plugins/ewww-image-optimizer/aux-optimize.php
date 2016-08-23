@@ -225,7 +225,7 @@ function ewww_image_optimizer_image_scan( $dir ) {
 			}
 			if ( empty( $skip_optimized ) || ! empty( $_REQUEST['ewww_force'] ) ) {
 				ewwwio_debug_message( "queued $path" );
-				$images[] = $path;
+				$images[] = utf8_encode( $path );
 			}
 		}
 //		ewww_image_optimizer_debug_log();
@@ -349,17 +349,6 @@ function ewww_image_optimizer_aux_images_script( $hook ) {
 								continue;
 							}
 							$already_optimized = ewww_image_optimizer_find_already_optimized( $path );
-							/*$query = $wpdb->prepare( "SELECT id,path FROM $wpdb->ewwwio_images WHERE path LIKE %s AND image_size LIKE '$image_size'", $path );
-							$optimized_query = $wpdb->get_results( $query, ARRAY_A );
-							if ( ! empty( $optimized_query ) ) {
-								foreach ( $optimized_query as $image ) {
-									if ( $image['path'] != $path ) {
-										ewwwio_debug_message( "{$image['path']} does not match $path, continuing our search" );
-									} else {
-										$already_optimized = $image;
-									}
-								}
-							}*/
 							$mimetype = ewww_image_optimizer_mimetype( $path, 'i' );
 							if ( preg_match( '/^image\/(jpeg|png|gif)/', $mimetype ) && empty( $already_optimized ) ) {
 								$slide_paths[] = $path;
@@ -394,18 +383,8 @@ function ewww_image_optimizer_aux_images_script( $hook ) {
 			}
 
 		}
-		if ( 'ewww-image-optimizer-auto' == $hook ) {
-			// queue the filenames we retrieved using the background image task
-			global $ewwwio_image_background;
-			foreach ( $attachments as $attachment ) {
-				$ewwwio_image_background->push_to_queue( $attachment );
-				ewwwio_debug_message( "scheduler queued: $attachment" );
-			}
-			$ewwwio_image_background->save()->dispatch();
-		} else {
-			// store the filenames we retrieved in the 'aux_attachments' option so we can keep track of our progress in the database
-			update_option( 'ewww_image_optimizer_aux_attachments', $attachments );
-		}
+		// store the filenames we retrieved in the 'bulk_attachments' option so we can keep track of our progress in the database
+		update_option( 'ewww_image_optimizer_aux_attachments', $attachments );
 		ewwwio_debug_message( 'found ' . count( $attachments ) . ' images to optimize while scanning' );
 	}
 	ewww_image_optimizer_debug_log();

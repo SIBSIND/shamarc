@@ -37,6 +37,12 @@ class ewwwngg {
 		ewwwio_debug_message( '<b>' . __FUNCTION__ . '()</b>' );
 		$image_id = $image['id'];
 		global $ewwwio_ngg_background;
+		if ( ! class_exists( 'WP_Background_Process' ) ) {
+			require_once( EWWW_IMAGE_OPTIMIZER_PLUGIN_PATH . 'background.php' );
+		}
+		if ( ! is_object( $ewwwio_ngg_background ) ) {
+			$ewwwio_ngg_background = new EWWWIO_Ngg_Background_Process();
+		}
 		ewwwio_debug_message( "optimization (nextcellent) queued for $image_id" );
 		$ewwwio_ngg_background->push_to_queue( array(
 			'id' => $image_id,
@@ -47,6 +53,12 @@ class ewwwngg {
 
 	function dispatch_new_images( $gallery, $images ) {
 		global $ewwwio_ngg_background;
+		if ( ! class_exists( 'WP_Background_Process' ) ) {
+			require_once( EWWW_IMAGE_OPTIMIZER_PLUGIN_PATH . 'background.php' );
+		}
+		if ( ! is_object( $ewwwio_ngg_background ) ) {
+			$ewwwio_ngg_background = new EWWWIO_Ngg_Background_Process();
+		}
 		foreach ( $images as $id ) {
 			$ewwwio_ngg_background->push_to_queue( array(
 				'id' => $id,
@@ -74,6 +86,12 @@ class ewwwngg {
 		global $ewww_defer;
 		if ( file_exists( $filename ) ) {
 			global $ewwwio_image_background;
+			if ( ! class_exists( 'WP_Background_Process' ) ) {
+				require_once( EWWW_IMAGE_OPTIMIZER_PLUGIN_PATH . 'background.php' );
+			}
+			if ( ! is_object( $ewwwio_image_background ) ) {
+				$ewwwio_image_background = new EWWWIO_Image_Background_Process();
+			}
 			$ewwwio_image_background->push_to_queue( $filename );
 			$ewwwio_image_background->save()->dispatch();
 			ewwwio_debug_message( "ngg thumb queued: $filename" );

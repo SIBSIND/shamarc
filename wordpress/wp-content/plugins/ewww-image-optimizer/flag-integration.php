@@ -219,6 +219,12 @@ class ewwwflag {
 		ewwwio_debug_message( '<b>' . __FUNCTION__ . '()</b>' );
 		$image_id = $image->pid;
 		global $ewwwio_flag_background;
+		if ( ! class_exists( 'WP_Background_Process' ) ) {
+			require_once( EWWW_IMAGE_OPTIMIZER_PLUGIN_PATH . 'background.php' );
+		}
+		if ( ! is_object( $ewwwio_flag_background ) ) {
+			$ewwwio_flag_background = new EWWWIO_Flag_Background_Process();
+		}
 		ewwwio_debug_message( "optimization (flagallery) queued for $image_id" );
 		$ewwwio_flag_background->push_to_queue( array(
 			'id' => $image_id,
