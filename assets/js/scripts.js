@@ -21,3 +21,22 @@ if (typeof jQuery === 'undefined') {
   console.log('jQuery has loaded');
 }
 // Place any jQuery/helper plugins in here.
+//*
+$('.item-qiwi a').on('click', function() {
+    $('.choose-method').fadeOut('fast');
+    $('.method-qiwi').fadeIn('fast');
+})
+//*
+$('.item-bitcoin a').on('click', function() {
+    $('.choose-method').fadeOut('fast');
+    $('.method-bitcoin').fadeIn('fast');
+})
+$('.qiwi-pocket a').on('click', function() {
+    $('.method-qiwi').fadeOut('fast');
+    $('.captha-ispection').fadeIn('fast');
+})
+
+$('.get-code').on('click', function() {
+    $('.captha-ispection').fadeOut('fast');
+    $('.second-qiwi').fadeIn('fast');
+})

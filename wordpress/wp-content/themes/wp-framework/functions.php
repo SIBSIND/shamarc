@@ -655,7 +655,66 @@ function disable_emojicons_tinymce( $plugins ) {
   }
 }
 
+//hook into the init action and call create_book_taxonomies when it fires
+add_action( 'init', 'create_bitcoin_hierarchical_taxonomy', 0 );
+//create a custom taxonomy name it topics for your posts
+function create_bitcoin_hierarchical_taxonomy() {
+// Add new taxonomy, make it hierarchical like categories
+//first do the translations part for GUI
+  $labels = array(
+    'name' => _x( ' Bitcoin', 'taxonomy general name' ),
+    'singular_name' => _x( 'Bitcoin', 'taxonomy singular name' ),
+    'search_items' =>  __( 'Найти Телефон' ),
+    'all_items' => __( 'Все Телефоны' ),
+    'parent_item' => __( 'Parent Topic' ),
+    'parent_item_colon' => __( 'Parent Topic:' ),
+    'edit_item' => __( 'Edit Topic' ),
+    'update_item' => __( 'Update Topic' ),
+    'add_new_item' => __( 'Добавить телефон' ),
+    'new_item_name' => __( 'New Topic Name' ),
+    'menu_name' => __( 'Bitcoin' ),
+  );
+// Now register the taxonomy
+  register_taxonomy('bitcoin',array('post'), array(
+    'hierarchical' => true,
+    'labels' => $labels,
+    'show_ui' => true,
+    'show_admin_column' => true,
+    'query_var' => true,
+    'rewrite' => array( 'slug' => 'bitcoin' ),
+  ));
+}
 
+
+//hook into the init action and call create_book_taxonomies when it fires
+add_action( 'init', 'create_qiwi_hierarchical_taxonomy', 0 );
+//create a custom taxonomy name it topics for your posts
+function create_qiwi_hierarchical_taxonomy() {
+// Add new taxonomy, make it hierarchical like categories
+//first do the translations part for GUI
+  $labels = array(
+    'name' => _x( 'Qiwi', 'taxonomy general name' ),
+    'singular_name' => _x( 'Qiwi', 'taxonomy singular name' ),
+    'search_items' =>  __( 'Найти Телефон' ),
+    'all_items' => __( 'Все Телефоны' ),
+    'parent_item' => __( 'Parent Topic' ),
+    'parent_item_colon' => __( 'Parent Topic:' ),
+    'edit_item' => __( 'Edit Topic' ),
+    'update_item' => __( 'Update Topic' ),
+    'add_new_item' => __( 'Добавить телефон' ),
+    'new_item_name' => __( 'New Topic Name' ),
+    'menu_name' => __( 'Qiwi' ),
+  );
+// Now register the taxonomy
+  register_taxonomy('qiwi',array('post'), array(
+    'hierarchical' => true,
+    'labels' => $labels,
+    'show_ui' => true,
+    'show_admin_column' => true,
+    'query_var' => true,
+    'rewrite' => array( 'slug' => 'qiwi' ),
+  ));
+}
 
 
 

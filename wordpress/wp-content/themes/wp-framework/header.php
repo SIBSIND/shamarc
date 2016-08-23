@@ -22,7 +22,7 @@
     <script src="<?php echo get_template_directory_uri(); ?>/js/jquery.customSelect.min.js"></script>
         <?php wp_head(); ?>
     </head>
-<body class="home-page">
+<body <?php body_class(); ?>>
 
 <div class="main">
     <header class="header">
