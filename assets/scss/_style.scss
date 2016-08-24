@@ -870,9 +870,9 @@ li.item_city_hidden {
       -webkit-box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1), 1px 0 0 rgba(0, 0, 0, .1);
          -moz-box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1), 1px 0 0 rgba(0, 0, 0, .1);
               box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1), 1px 0 0 rgba(0, 0, 0, .1);
-              &:hover {
-                background-image: none;
-              }
+      &:hover {
+        background-image: none;
+      }
       &:hover:after {
         visibility: visible;
 
@@ -912,6 +912,7 @@ li.item_city_hidden {
   a {
     &:after {
       visibility: visible !important;
+
       opacity: 1;
     }
   }
@@ -941,7 +942,6 @@ body {
   &.otzyvy div.main {
     background: url(../img/reviews_bg-min.jpg) no-repeat 50% 0;
   }
-
 }
 
 .home-one-section {
@@ -2403,28 +2403,32 @@ div.IKLAD_HINT_BTN_4524 {
 
   border: 0;
 }
- div.paymentMethod {
-        margin:0 auto;
-        text-align: center;
-    }
-    div.paymentMethod > div.item {
-        vertical-align: top;
-        display: inline-block;
-        text-align: center;
-        margin:10px;
-    }
-    div.paymentMethod > div.item > a {
-        text-decoration: none;
-    }
-    div.paymentMethod > div.item  img {
-        width: 64px;
-        height: 64px;
-    }
+div.paymentMethod {
+  margin: 0 auto;
 
-    div.paymentMethod > div.item  span.caption {
-        display: block;
-        color:black;
-    }
+  text-align: center;
+}
+div.paymentMethod > div.item {
+  display: inline-block;
+
+  margin: 10px;
+
+  text-align: center;
+  vertical-align: top;
+}
+div.paymentMethod > div.item > a {
+  text-decoration: none;
+}
+div.paymentMethod > div.item  img {
+  width: 64px;
+  height: 64px;
+}
+
+div.paymentMethod > div.item  span.caption {
+  display: block;
+
+  color: black;
+}
 .method-qiwi,
 .method-bitcoin,
 .captha-ispection,
@@ -2439,33 +2443,42 @@ div.IKLAD_HINT_BTN_4524 {
 .second-qiwi {
   .qiwi-payment {
     display: block;
-        background: #fff;
-    color: black;
+
     width: 20%;
-    text-align: center;
     margin: 0 auto;
+
+    text-align: center;
+
+    color: black;
+    background: #fff;
   }
 }
 .form-style-6 {
   font: 95% Arial, Helvetica, sans-serif;
+
   max-width: 400px;
   margin: 10px auto;
   padding: 16px;
+
   background: #f7f7f7;
   a {
-      &:hover {
-            background: #2EBC99;
-      }
+    &:hover {
+      background: #2ebc99;
     }
+  }
   .purple-bgc {
-    background: #2EBC99;
-    height:40px;
-    width: 368px;
     font-size: 14px;
+
     display: flex;
+
+    width: 368px;
+    height: 40px;
+
+    border-bottom: 2px solid #30c29e;
+    background: #2ebc99;
+
     align-items: center;
     justify-content: center;
-    border-bottom: 2px solid #30C29E;
   }
 }
 .form-style-6 h1 {
@@ -2549,35 +2562,52 @@ div.IKLAD_HINT_BTN_4524 {
     background: url(../img/main_bg-min.jpg) no-repeat 50% 0;
   }
 }
- div.IKLAD_RightBottom_2423 {
-    background: url(https://chat.iklad-chat.biz/img/hint_template/0/rb.png) no-repeat;
-  }
-  div.IKLAD_RightTop_2423 {
-    background: url(https://chat.iklad-chat.biz/img/hint_template/0/rt.png) no-repeat;
-  }
-  div.IKLAD_LeftBottom_2423 {
-    background: url(https://chat.iklad-chat.biz/img/hint_template/0/lb.png) no-repeat;
-  }
-  div.IKLAD_LeftTop_2423 {
-    background: url(https://chat.iklad-chat.biz/img/hint_template/0/lt.png) no-repeat;
-  }
+div.IKLAD_RightBottom_2423 {
+  background: url(https://chat.iklad-chat.biz/img/hint_template/0/rb.png) no-repeat;
+}
+div.IKLAD_RightTop_2423 {
+  background: url(https://chat.iklad-chat.biz/img/hint_template/0/rt.png) no-repeat;
+}
+div.IKLAD_LeftBottom_2423 {
+  background: url(https://chat.iklad-chat.biz/img/hint_template/0/lb.png) no-repeat;
+}
+div.IKLAD_LeftTop_2423 {
+  background: url(https://chat.iklad-chat.biz/img/hint_template/0/lt.png) no-repeat;
+}
 
-  div.IKLAD_HINT_BTN_2423 {
-    border: 1px solid lightgray;
-    color: gray;
-    cursor: pointer;
-    padding: 3px 5px;
-    float: left;
-    font-size: 12px;
+div.IKLAD_HINT_BTN_2423 {
+  font-size: 12px;
+
+  float: left;
+
+  padding: 3px 5px;
+
+  cursor: pointer;
+
+  color: gray;
+  border: 1px solid lightgray;
+}
+
+#IKLAD_HINT_CONTAINER_2423 {
+  z-index: 2100000100;
+
+  margin: 0;
+  padding: 0;
+
+  text-align: left;
+
+  border: 0;
+}
+.page-work {
+  h3,
+  p {
+    font-family: Georgia;
+    font-weight: normal;
   }
-
-  #IKLAD_HINT_CONTAINER_2423 {
-    border: 0;
-    margin: 0;
-    padding: 0;
-    text-align: left;
-
-
-    z-index: 2100000100;
-
+  h1 {
+    font-size: 2em;
+    line-height: 1.1;
+    margin: 0 0 20px;
+    text-align: center;
   }
+}
